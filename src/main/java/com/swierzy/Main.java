@@ -107,7 +107,7 @@ public class Main {
                         .tableArn(tableArn)
                         .exportTime(Instant.parse("2023-09-20T12:00:00Z"))
                         .s3Bucket("dynamo01-fro8fl9kuqli.private.compat.objectstorage.eu-frankfurt-1.oci.customer-oci.com")
-                        .clientToken("3kDSU+sn7:5H.0oZk2[q")
+                        .clientToken("...")
                         .exportFormat(ExportFormat.DYNAMODB_JSON));
                 expEndTime   = System.currentTimeMillis();
                 System.out.println(resp);
