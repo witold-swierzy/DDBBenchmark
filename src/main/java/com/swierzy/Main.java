@@ -103,14 +103,14 @@ public class Main {
             if (execExport) {
                 expStartTime = System.currentTimeMillis();
 
-                client.exportTableToPointInTime(b -> b
+                ExportTableToPointInTimeResponse resp = client.exportTableToPointInTime(b -> b
                         .tableArn(tableArn)
                         .exportTime(Instant.parse("2023-09-20T12:00:00Z"))
-                        .s3Bucket("dynamo")
-                        .s3Prefix("prefix")
-                        .clientToken("abrakadabra")
+                        .s3Bucket("dynamo01-fro8fl9kuqli.private.compat.objectstorage.eu-frankfurt-1.oci.customer-oci.com")
+                        .clientToken("3kDSU+sn7:5H.0oZk2[q")
                         .exportFormat(ExportFormat.DYNAMODB_JSON));
                 expEndTime   = System.currentTimeMillis();
+                System.out.println(resp);
             }
             client.close();
             endTime = System.currentTimeMillis();
@@ -121,7 +121,7 @@ public class Main {
             System.out.println("Number of CRUD ops sets         : "+numOfOperations);
             System.out.println("Total execution time (ms)       : "+(endTime-startTime));
             System.out.println("Execution times of threads (ms) : ");
-            System.out.println("Export time (ms)                : "+(expEndTime));
+            System.out.println("Export time (ms)                : "+(expEndTime-expStartTime));
             for (int i=0; i<threadPoolSize;i++)
                 System.out.println("Thread #"+i+", total : "+appliers[i].getExecutionTime() +
                         " ,Insert : "+appliers[i].getInsertTime() +
